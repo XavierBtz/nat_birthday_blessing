@@ -1,6 +1,5 @@
 import streamlit as st
 import datetime
-import streamlit.components.v1 as components
 
 # --- CONFIGURATION ---
 st.set_page_config(page_title="For Natasia", page_icon="✨", layout="centered")
@@ -8,7 +7,7 @@ st.set_page_config(page_title="For Natasia", page_icon="✨", layout="centered")
 # --- BULLETPROOF CENTERING & PREMIUM GLASS CSS ---
 st.markdown("""
     <style>
-    /* Prevent background repeating and force high-end dark gradient */
+    /* Force high-end dark gradient background */
     .stApp {
         background: linear-gradient(135deg, #0f0c29 0%, #1b163a 50%, #101026 100%) !important;
         background-attachment: fixed;
@@ -22,7 +21,7 @@ st.markdown("""
         letter-spacing: 3px;
         text-align: center;
         font-size: 2.5rem;
-        margin-top: 30px;
+        margin-top: 50px;
         margin-bottom: 5px;
     }
     
@@ -32,11 +31,20 @@ st.markdown("""
         font-family: 'Georgia', serif;
         font-style: italic;
         font-size: 1.1rem;
-        margin-bottom: 25px;
+        margin-bottom: 40px;
     }
 
-    /* Force the button to be completely centered on the screen */
-    div.stButton > button {
+    /* Target the exact wrapper container Streamlit creates to force true centering */
+    div[data-testid="stButton"] {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+        margin: 30px 0 !important;
+    }
+    
+    /* Elegant Glowing Button Styling */
+    div[data-testid="stButton"] > button {
         background: transparent !important;
         color: #FFD1DC !important;
         border: 1px solid #FFD1DC !important;
@@ -47,13 +55,10 @@ st.markdown("""
         letter-spacing: 2px !important;
         text-transform: uppercase !important;
         transition: all 0.4s ease !important;
-        display: block !important;
-        margin: 25px auto !important;
-        box-sizing: border-box;
         box-shadow: 0 4px 15px rgba(255, 209, 220, 0.1) !important;
     }
     
-    div.stButton > button:hover {
+    div[data-testid="stButton"] > button:hover {
         background-color: #FFD1DC !important;
         color: #0f0c29 !important;
         box-shadow: 0 0 25px rgba(255, 209, 220, 0.5) !important;
@@ -78,9 +83,7 @@ st.markdown("""
         max-width: 550px;
     }
     
-   
-    
-    /* Center info alert message text */
+    /* Center info alert lockout message text */
     .stAlert {
         text-align: center;
         max-width: 450px;
@@ -115,8 +118,6 @@ if st.session_state.last_date_natasia != today:
 # --- UI LAYOUT ---
 st.markdown('<div class="main-title">Natasia Rebecca Nelson</div>', unsafe_allow_html=True)
 st.markdown('<div class="subtitle">A daily note, just for you.</div>', unsafe_allow_html=True)
-
-
 
 if st.session_state.opened_today_natasia:
     st.markdown(f'<div class="love-note">"{messages[day_index]}"<br><br><span style="font-size: 16px; color: #FFD1DC;">— Nathaniel</span></div>', unsafe_allow_html=True)
