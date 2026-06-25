@@ -121,16 +121,7 @@ if st.session_state.last_date_natasia != today:
 st.markdown('<div class="main-title">Natasia Rebecca Nelson</div>', unsafe_allow_html=True)
 st.markdown('<div class="subtitle">A daily note, just for you.</div>', unsafe_allow_html=True)
 
-# Clean, structured Spotify Player Box
-# (Tip: You can swap out the track ID '4PTG3Z6ehGkBFm3T7Y8Zor' with any song link from Spotify!)
-st.markdown('<div class="music-wrapper">', unsafe_allow_html=True)
-st.components.v1.html("""
-    <iframe style="border-radius:12px;" 
-    src="https://open.spotify.com/embed/track/4PTG3Z6ehGkBFm3T7Y8Zor?utm_source=generator&theme=0" 
-    width="100%" height="80" frameBorder="0" allowfullscreen="" 
-    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-""", height=80)
-st.markdown('</div>', unsafe_allow_html=True)
+
 
 if st.session_state.opened_today_natasia:
     st.markdown(f'<div class="love-note">"{messages[day_index]}"<br><br><span style="font-size: 16px; color: #FFD1DC;">— Nathaniel</span></div>', unsafe_allow_html=True)
