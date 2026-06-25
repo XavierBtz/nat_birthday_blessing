@@ -78,12 +78,7 @@ st.markdown("""
         max-width: 550px;
     }
     
-    /* Center container layout for the Spotify player */
-    .music-wrapper {
-        max-width: 450px;
-        margin: 0 auto;
-        padding: 0 10px;
-    }
+   
     
     /* Center info alert message text */
     .stAlert {
