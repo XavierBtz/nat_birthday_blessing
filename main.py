@@ -105,10 +105,7 @@ st.markdown('<div class="subtitle">A daily note, just for you.</div>',
 
 # Optional: Embed her favorite song or a playlist (Replace the src link with any Spotify embed link)
 st.components.v1.html("""
-    <iframe style="border-radius:12px; margin: 0 auto; display: block;" 
-    src="https://open.spotify.com/embed/track/40riOy7x9W7GXjyhZZaDhe?utm_source=generator&theme=0" 
-    width="80%" height="80" frameBorder="0" allowfullscreen="" 
-    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/68dGKf5eIchw0bxpuhk4g8?utm_source=generator&si=0a413f06accf4df6" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 """, height=100)
 
 if st.session_state.opened_today_natasia:
