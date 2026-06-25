@@ -3,63 +3,67 @@ import datetime
 import streamlit.components.v1 as components
 
 # --- CONFIGURATION ---
-st.set_page_config(page_title="For Natasia", page_icon="✨")
+st.set_page_config(page_title="For Natasia", page_icon="✨", layout="centered")
 
-# --- PREMIUM "GLASSMORPHISM" CSS ---
+# --- BULLETPROOF CENTERING & PREMIUM GLASS CSS ---
 st.markdown("""
     <style>
-    /* Sleek, deep romantic background */
+    /* Prevent background repeating and force high-end dark gradient */
     .stApp {
-        background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+        background: linear-gradient(135deg, #0f0c29 0%, #1b163a 50%, #101026 100%) !important;
+        background-attachment: fixed;
     }
     
-    /* Elegant Title */
-    h1 {
+    /* Clean custom Title styling */
+    .main-title {
         color: #FFD1DC !important; /* Rose Gold */
         font-family: 'Helvetica Neue', sans-serif;
         font-weight: 300;
-        letter-spacing: 2px;
+        letter-spacing: 3px;
         text-align: center;
-        padding-top: 20px;
+        font-size: 2.5rem;
+        margin-top: 30px;
+        margin-bottom: 5px;
     }
     
     .subtitle {
-        color: #E0E0E0;
+        color: #B0A8B9;
         text-align: center;
         font-family: 'Georgia', serif;
         font-style: italic;
-        font-size: 16px;
-        margin-bottom: 40px;
+        font-size: 1.1rem;
+        margin-bottom: 25px;
     }
 
-    /* Centered, glowing button */
-    div.stButton { text-align: center; }
-    
-    .stButton>button {
-        background: transparent;
-        color: #FFD1DC;
-        border: 1px solid #FFD1DC;
-        border-radius: 30px;
-        padding: 12px 35px;
-        font-family: 'Helvetica Neue', sans-serif;
-        font-size: 16px;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        transition: all 0.4s ease;
-        margin: 20px auto;
+    /* Force the button to be completely centered on the screen */
+    div.stButton > button {
+        background: transparent !important;
+        color: #FFD1DC !important;
+        border: 1px solid #FFD1DC !important;
+        border-radius: 30px !important;
+        padding: 12px 45px !important;
+        font-family: 'Helvetica Neue', sans-serif !important;
+        font-size: 15px !important;
+        letter-spacing: 2px !important;
+        text-transform: uppercase !important;
+        transition: all 0.4s ease !important;
+        display: block !important;
+        margin: 25px auto !important;
+        box-sizing: border-box;
+        box-shadow: 0 4px 15px rgba(255, 209, 220, 0.1) !important;
     }
     
-    .stButton>button:hover {
-        background-color: #FFD1DC;
-        color: #0f0c29;
-        box-shadow: 0 0 20px rgba(255, 209, 220, 0.4);
+    div.stButton > button:hover {
+        background-color: #FFD1DC !important;
+        color: #0f0c29 !important;
+        box-shadow: 0 0 25px rgba(255, 209, 220, 0.5) !important;
     }
     
-    /* Frosted Glass Message Box */
+    /* Premium Frosted Glass Box */
     .love-note {
-        background: rgba(255, 255, 255, 0.05);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.06);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
         border: 1px solid rgba(255, 255, 255, 0.1);
         padding: 40px 30px;
         border-radius: 20px;
@@ -69,8 +73,23 @@ st.markdown("""
         font-style: italic;
         text-align: center;
         line-height: 1.8;
-        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-        margin-top: 30px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        margin: 30px auto;
+        max-width: 550px;
+    }
+    
+    /* Center container layout for the Spotify player */
+    .music-wrapper {
+        max-width: 450px;
+        margin: 0 auto;
+        padding: 0 10px;
+    }
+    
+    /* Center info alert message text */
+    .stAlert {
+        text-align: center;
+        max-width: 450px;
+        margin: 20px auto !important;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -98,21 +117,23 @@ if st.session_state.last_date_natasia != today:
     st.session_state.opened_today_natasia = False
     st.session_state.last_date_natasia = today
 
-# --- UI ---
-st.title("Natasia Rebecca Nelson")
-st.markdown('<div class="subtitle">A daily note, just for you.</div>',
-            unsafe_allow_html=True)
+# --- UI LAYOUT ---
+st.markdown('<div class="main-title">Natasia Rebecca Nelson</div>', unsafe_allow_html=True)
+st.markdown('<div class="subtitle">A daily note, just for you.</div>', unsafe_allow_html=True)
 
-# Optional: Embed her favorite song or a playlist (Replace the src link with any Spotify embed link)
+# Clean, structured Spotify Player Box
+# (Tip: You can swap out the track ID '4PTG3Z6ehGkBFm3T7Y8Zor' with any song link from Spotify!)
+st.markdown('<div class="music-wrapper">', unsafe_allow_html=True)
 st.components.v1.html("""
-    <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/68dGKf5eIchw0bxpuhk4g8?utm_source=generator&si=0a413f06accf4df6" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-""", height=100)
+    <iframe style="border-radius:12px;" 
+    src="https://open.spotify.com/embed/track/4PTG3Z6ehGkBFm3T7Y8Zor?utm_source=generator&theme=0" 
+    width="100%" height="80" frameBorder="0" allowfullscreen="" 
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+""", height=80)
+st.markdown('</div>', unsafe_allow_html=True)
 
 if st.session_state.opened_today_natasia:
-    # The Reveal
-    st.markdown(
-        f'<div class="love-note">"{messages[day_index]}"<br><br><span style="font-size: 16px; color: #FFD1DC;">— Nathaniel</span></div>', unsafe_allow_html=True)
-    st.write("")
+    st.markdown(f'<div class="love-note">"{messages[day_index]}"<br><br><span style="font-size: 16px; color: #FFD1DC;">— Nathaniel</span></div>', unsafe_allow_html=True)
     st.info("Your message is locked for the day. Come back tomorrow for a new one. ✨")
 else:
     if st.button("Unlock Today's Note"):
