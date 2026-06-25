@@ -34,13 +34,13 @@ st.markdown("""
         margin-bottom: 40px;
     }
 
-    /* Target the exact wrapper container Streamlit creates to force true centering */
+    /* Target the button container inside the layout column to force absolute centering */
     div[data-testid="stButton"] {
         display: flex !important;
         justify-content: center !important;
         align-items: center !important;
         width: 100% !important;
-        margin: 30px 0 !important;
+        text-align: center !important;
     }
     
     /* Elegant Glowing Button Styling */
@@ -123,6 +123,9 @@ if st.session_state.opened_today_natasia:
     st.markdown(f'<div class="love-note">"{messages[day_index]}"<br><br><span style="font-size: 16px; color: #FFD1DC;">— Nathaniel</span></div>', unsafe_allow_html=True)
     st.info("Your message is locked for the day. Come back tomorrow for a new one. ✨")
 else:
-    if st.button("Unlock Today's Note"):
-        st.session_state.opened_today_natasia = True
-        st.rerun()
+    # Use layout columns to construct a dedicated structural center block
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        if st.button("Unlock Today's Note"):
+            st.session_state.opened_today_natasia = True
+            st.rerun()
